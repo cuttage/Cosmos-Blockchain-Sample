@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import vue from '@vitejs/plugin-vue'
 import { Buffer } from 'buffer'
@@ -9,16 +10,16 @@ import envCompatible from 'vite-plugin-env-compatible'
 export default defineConfig({
   define: {
     global: {
-      Buffer: Buffer
-    }
+      Buffer: Buffer,
+    },
   },
   server: {
     watch: {
       ignored: [
         '!**/node_modules/@starport/vue/src/**',
-        '!**/node_modules/@starport/vuex/src/**'
-      ]
-    }
+        '!**/node_modules/@starport/vuex/src/**',
+      ],
+    },
   },
   plugins: [vue(), nodeResolve(), dynamicImport(), envCompatible()],
   optimizeDeps: {
@@ -27,7 +28,7 @@ export default defineConfig({
       'crypto-js',
       'axios',
       'qrcode',
-      '@cosmjs/encoding'
-    ]
-  }
+      '@cosmjs/encoding',
+    ],
+  },
 })
